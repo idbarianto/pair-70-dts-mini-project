@@ -17,7 +17,6 @@ function App() {
 
   const [user, loading] = useAuthState(auth);
 
-
   useEffect(
     () => {
       console.log(user)
