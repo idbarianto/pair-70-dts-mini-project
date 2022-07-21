@@ -48,7 +48,7 @@ const ListMovies = () => {
                 const fetchDataMovies = async () => {
                     const response = await axios({
                         method: 'get',
-                        url: "http://barianto.e-dev.web.id/",
+                        url: "https://api-dts.herokuapp.com/",
                         params: {
                             token: '3As0grhU1A0-bB7eR1ZObavZtNWW3YXTd8.vrJbviTRaiviOmwBZXeKMPnPDtSuz07wVd47DNKue4k',
                         }
