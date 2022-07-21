@@ -1,5 +1,5 @@
 // Membutuhkan state untuk meng-track value dari TextField
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Gunakan .module.css untuk mendapatkan scoped css
 import styles from "./LoginOrRegisterForm.module.css";
@@ -21,6 +21,7 @@ import {
 
 
 const LoginOrRegisterForm = ({ loginOrRegister }) => {
+
     // gunakan hooks useNavigate
     const navigate = useNavigate();
 
@@ -28,6 +29,10 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
         email: "",
         password: "",
     });
+
+
+    const [user, loading] = useAuthState(auth);
+
 
     const textFieldEmailOnChangeHandler = (event) => {
         // Karena state berupa Object
@@ -67,6 +72,20 @@ const LoginOrRegisterForm = ({ loginOrRegister }) => {
             registerHandler();
         }
     };
+
+    useEffect(
+        () => {
+            console.log(user)
+            if(loading) {
+                return;
+            }
+
+            if(user) {
+                navigate("/");
+            }
+
+        }, [loading, user, navigate]
+    )
 
     return (
         <Grid

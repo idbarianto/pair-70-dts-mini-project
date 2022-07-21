@@ -8,12 +8,17 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./NavBar.module.css";
 
+
+import { keliarAplikasi } from '../authentication/firebase'
+
 const NavBar = () => {
     // Gunakan hooks useNavigate
     const navigate = useNavigate();
 
-    const buttonLogoutOnClickHandler = () => {
+    const buttonLogoutOnClickHandler = async () => {
+        await keliarAplikasi();
         navigate("/login");
+
     };
 
     return (
